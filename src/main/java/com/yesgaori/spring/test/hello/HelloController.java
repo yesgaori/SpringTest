@@ -1,4 +1,4 @@
-package com.yesgaori.test.hello;
+package com.yesgaori.spring.test.hello;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
