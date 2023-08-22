@@ -78,7 +78,7 @@ public class Test02Controller {
 		
 	}
 	@RequestMapping("/3")
-	public ResponseEntity(Post) entityResponse() {
+	public ResponseEntity<Post> entityResponse() {
 		Post one = new Post("안녕하세요 가입인사 드립니다.", "hagulu", "안녕하세요. 가입했어요. 앞으로 잘 부탁드립니다. 활동 열심히 하겠습니다.");
 		
 		ResponseEntity<Post> entity = new ResponseEntity(one, HttpStatus.INTERNAL_SERVER_ERROR);
