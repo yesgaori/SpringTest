@@ -28,5 +28,30 @@ public class Real_estateService {
 		List<Real_estate> real_estate = real_estateRepository.selectRepository2(rentPrice);
 		return real_estate;
 	}
+	// 넓이와 가격 조건에 따른 매물정보 돌려주는 기능
+	public List<Real_estate> getReal_estate3(int price, int area) {
+		
+		List<Real_estate> real_estate = real_estateRepository.selectRepository3(price, area);
+		return real_estate;
+	}
+	
+	//
+	public int addRealestate1(Real_estate real_estate) {
+		int count = real_estateRepository.insertRealestate(real_estate);
+		return count;
+	}
+	
+	
+	// 전달받은 값으로 새로운 매물정보 등록하는 기능
+	public int addRealestate2(int realtorId, String address, int area, String type, int price, int rentPrice) {
+		int count = real_estateRepository.insertRealestateObject(realtorId, address, area, type, price, rentPrice);
+		return count;
+	}
+	
+	public int updateRealestate(Real_estate realestate) {
+		
+		int count = real_estateRepository.updateRealestate(realestate);
+		return count;
+	}
 	
 }

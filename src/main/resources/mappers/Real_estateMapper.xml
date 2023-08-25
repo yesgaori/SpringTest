@@ -45,5 +45,88 @@
  			AND `rentPrice` <![CDATA[<]]> #{rentPrice}
  			
  	</select>
+ 	
+ 	<select id="selectRepository3" parameterType="map"
+ 	resultType="com.yesgaori.spring.test.mybatis.domain.Real_estate">
+ 		
+ 		SELECT
+ 			`id`
+ 			, `realtorId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 			, `rentPrice`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`real_estate`
+ 		WHERE
+ 			`type` = '매매'
+ 			AND `price` <![CDATA[<=]]> #{price}
+ 			AND `area` <![CDATA[>=]]> #{area}
+ 		ORDER BY
+ 			`createdAt`
+ 			
+ 	</select>
+ 	<insert id="insertRealestate" parameterType="com.yesgaori.spring.test.mybatis.domain.Real_estate">
+ 	
+ 		INSERT INTO
+ 		`real_estate`
+ 		(
+ 			`realtorId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 		)
+ 		VALUE
+ 		(
+ 			#{realtorId}
+ 			, #{address}
+ 			, #{area}
+ 			, #{type}
+ 			, #{price}
+ 		
+ 		)
+ 		
+ 	</insert>
+ 	
+ 	
+ 	<insert id = "insertRealestateObject" parameterType="map">
+ 	
+ 		INSERT INTO
+ 		`real_estate`
+ 		(	
+ 			`realtorId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 			, `rentPrice`
+ 		)
+ 		VALUE
+ 		(	
+ 			#{realtorId}
+ 			, #{address}
+ 			, #{area}
+ 			, #{type}
+ 			, #{price}
+ 			, #{rentPrice}
+ 		
+ 		)
+ 	</insert>
+ 	<update id="updateRealestate" parameterType="map">
+ 		
+ 		UPDATE `real_estate`
+ 		SET 
+ 		`type` = #{type}
+ 		AND `price` = #{price}
+ 		AND `updatedAt` = 
+ 		WHERE
+ 		`id` = 24
+ 		
+ 		
+ 	</update>
  
  </mapper>
