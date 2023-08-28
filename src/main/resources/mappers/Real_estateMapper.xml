@@ -118,15 +118,25 @@
  	</insert>
  	<update id="updateRealestate" parameterType="map">
  		
- 		UPDATE `real_estate`
+ 		UPDATE 
+ 			`real_estate`
  		SET 
- 		`type` = #{type}
- 		AND `price` = #{price}
- 		AND `updatedAt` = 
+ 			`type` = #{type}
+ 			,`price` = #{price}
+ 			,`updatedAt` = now() 
  		WHERE
- 		`id` = 24
+ 			`id` = #{id}
  		
  		
  	</update>
+ 	
+ 	<delete id="deleteRealestate" parameterType="int">
+ 	
+ 		DELETE FROM
+ 			`real_estate`
+ 		WHERE
+ 			`id` = #{id}
+ 	
+ 	</delete>
  
  </mapper>

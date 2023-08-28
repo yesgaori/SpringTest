@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.yesgaori.spring.test.jsp.repository.SellerRepository">
+ 	
+ 	<insert id="addSellerRepository" parameterType="map">
+ 		INSERT INTO
+ 			`seller`
+ 			(
+ 				`nickname`
+ 				, `profileImage`
+ 				, `temperature`
+ 			)
+ 		VALUE
+ 			(
+ 				#{nickName}
+ 				, #{profileImage}
+ 				, #{temperature}
+ 			)
+ 			
+ 	</insert>
+ 	
+ 	<select id="lastSeller" resultType="com.yesgaori.spring.test.jsp.domain.Seller">
+ 		
+ 		SELECT
+ 			`id`
+ 			, `nickname`
+ 			, `profileImage`
+ 			, `temperature`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`seller`
+ 		ORDER BY
+ 			`id` DESC
+ 		LIMIT
+ 			1
+ 		
+ 		
+ 	
+ 	</select>
+ 	
+ 	
+ 
+ </mapper>

@@ -67,11 +67,19 @@ public class Real_estateController {
 	@RequestMapping("/update")
 	@ResponseBody
 	public String updateObject() {
-		Real_estate realestate = new Real_estate();
-		realestate.setType("전세");
-		realestate.setPrice(70000);
-		
-		int count = real_estateService.updateRealestate(realestate);
+
+		// id가 21인 매물 정보를 type 전세로 바꾸고 보증금을 70000으로 변경
+		int count = real_estateService.updateRealestate(21, "전세", 70000);
 		return "수정 성공 : " + count;
 	}
+	@RequestMapping("/delete")
+	@ResponseBody
+	public String deleteRealestate(@RequestParam("id")int id) {
+		
+		int count = real_estateService.deleteRealestate(id);
+		
+		return "수행결과 : " + count;
+	}
+	
+	
 }

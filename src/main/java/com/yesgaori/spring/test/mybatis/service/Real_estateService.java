@@ -48,9 +48,15 @@ public class Real_estateService {
 		return count;
 	}
 	
-	public int updateRealestate(Real_estate realestate) {
+	public int updateRealestate(int id, String type, int price) {
 		
-		int count = real_estateRepository.updateRealestate(realestate);
+		int count = real_estateRepository.updateRealestate(id, type, price);
+		return count;
+	}
+	
+	public int deleteRealestate(int id) {
+		
+		int count = real_estateRepository.deleteRealestate(id);
 		return count;
 	}
 	
