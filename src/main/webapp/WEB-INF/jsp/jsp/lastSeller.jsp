@@ -4,25 +4,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>판매자 추가</title>
+<title>최근 판매자</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-	
-	<h1>판매자 추가</h1>
-	
-	<form method="Post" action="/jsp/seller/create">
-		<div><label>닉네임</label></div>
-		<input type="text" name="nickname">
+	<div class="container">
+		<h1>판매자 정보</h1><br>
 		
-		<div><label>프로필 사진 url</label></div>
-		<input type="text" name="profileImage">
-		
-		<div><label>온도</label></div>
-		<input type="text" name="temperature"><br>
-		
-		<button type="submit" class="btn btn-primary">추가</button>
-	</form>
+		<img src="${result.profileImage}" class="w-25">
+		<h3>${result.nickname}</h3>
+		<h3 class="text-warning">${result.temperature}</h3>
+	</div>
 	
 	
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

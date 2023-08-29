@@ -12,8 +12,8 @@ public class SellerService {
 	@Autowired
 	SellerRepository sellerRepository; 
 	
-	public int addSeller(String nickName, String profileImage, double temperature){
-		int count = sellerRepository.addSellerRepository(nickName, profileImage, temperature);
+	public int addSeller(String nickname, String profileImage, double temperature){
+		int count = sellerRepository.addSellerRepository(nickname, profileImage, temperature);
 		
 		return count;
 	}
@@ -23,5 +23,11 @@ public class SellerService {
 		Seller seller = sellerRepository.lastSeller();
 		return seller;
 		
+	}
+	
+	public Seller getSeller(int id) {
+		Seller seller = sellerRepository.selectSeller(id);
+		
+		return seller;
 	}
 }

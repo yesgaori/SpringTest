@@ -9,10 +9,12 @@ import com.yesgaori.spring.test.jsp.domain.Seller;
 public interface SellerRepository {
 	
 	public int addSellerRepository(
-									@Param("nickname") String nickName
+									@Param("nickname") String nickname
 									, @Param("profileImage")String profileImage
 									, @Param("temperature")double temperature);
 	
 	public Seller lastSeller();
+	
+	public Seller selectSeller(@Param("id") int id);
 	
 }
