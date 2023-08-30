@@ -5,23 +5,24 @@
  
  <mapper namespace="com.yesgaori.spring.test.jsp.repository.RealtorRepository">
  	
- 	<insert id="addRealtorRepository" parameterType="map">
+ 	<insert id="addRealtorRepository" parameterType="com.yesgaori.spring.test.jsp.domain.Realtor"
+ 	useGeneratedKeys="true" keyProperty="id">
  		
  		INSERT INTO
  			`realtor`
-			(
+		(
  			`office`
  			, `phoneNumber`
  			, `address`
  			, `grade`
-			)
+		)
  		VALUE
-			(
+		(
  			#{office}
  			, #{phoneNumber}
  			, #{address}
  			, #{grade}
-			)
+		)
  	</insert>
  	
  	<select id="selectRealtor" resultType="com.yesgaori.spring.test.jsp.domain.Realtor">
@@ -33,7 +34,7 @@
  			, `address`
  			, `grade`
  			, `createdAt`
- 			, `uppdatedAt`
+ 			, `updatedAt`
  		FROM
  			`realtor`
  		ORDER BY
@@ -43,6 +44,8 @@
  		
  		
  	</select>
+ 	
+
  	
  
  </mapper>

@@ -13,30 +13,30 @@
 	<div class="container">
 	
 		<h1>공인중개사 정보</h1>
-		<hr>
-		<div>
-			<h3>id</h3>
-			<h3>${ }</h3>
-		</div>
-		<hr>
-		<div>
-			<h3>상호명</h3>
-			<h3>${ }</h3>
-		</div>
-		<hr>
-		<div>
-			<h3>전화번호</h3>
-			<h3>${ }</h3>
-		</div><hr>
-		<div>
-			<h3>주소</h3>
-			<h3>${ }</h3>
-		</div>
-		<hr>
-		<div>
-			<h3>등급</h3>
-			<h3>${ }</h3>
-		</div>
+
+		
+		<table class="table">
+			<tr>
+				<td>id</td>
+				<td>${realtor.id }</td>
+			</tr>
+			<tr>
+				<td>상호명</td>
+				<td>${realtor.office }</td>
+			</tr>
+			<tr>
+				<td>전화번호</td>
+				<td>${realtor.phoneNumber }</td>
+			</tr>
+			<tr>
+				<td>주소</td>
+				<td>${realtor.address }</td>
+			</tr>
+			<hr>			<tr>
+				<td>등급</td>
+				<td>${realtor.grade }</td>
+			</tr>
+		</table>
 	
 	</div>
 	
