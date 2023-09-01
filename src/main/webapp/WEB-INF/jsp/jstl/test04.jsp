@@ -7,63 +7,53 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>연습문제 3</title>
+<title>연습문제 4</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-	
 	<div class="container">
-		<h1>1. 후보자 득표율</h1>
+		<h1>회원 정보 리스트</h1>
 		<table class="table text-center">
 			<thead>
 				<tr>
-					<th>기호</th>
-					<th>득표 수</th>
-					<th>득표 율</th>
+					<th>No</th>
+					<th>이름</th>
+					<th>전화번호</th>
+					<th>국적</th>
+					<th>이메일</th>
+					<th>자기소개</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="candy" items="${candidates }" varStatus="status" >
+				<c:forEach var="member" items="${members }" varStatus="status" >
 				<tr>
 					<td>${status.count }</td>
-					<td>${candy }</td>
-					<td>
-						<fmt:formatNumber value='${candy/ 1000000 }' type='percent' />
-					</td>
+					<td>${member.name }</td>
+					
+					<c:choose>
+						<c:when test="${fn:startsWith(member.phoneNumber, '010') }">
+							<td>${member.phoneNumber }</td>
+						</c:when>
+						<c:otherwise>
+							<td>유효하지 않은 번호입니다.</td>
+						</c:otherwise>
+					</c:choose>
+					<td>${fn:substring(member.nationality, 0, 2)}-${fn:substring(member.nationality, 5,7) }</td>
+					<td><b>${fn:split(member.email, "@")[0] }</b>@${fn:split(member.email, "@")[1] }</td>
+					<c:choose>
+						<c:when test="${fn:length(member.introduce) > 14 }" >
+							<td>${fn:substring(member.introduce, 0, 15 )} .....</td>
+						</c:when>
+						<c:otherwise>
+							<td>${member.introduce }</td>
+						</c:otherwise>
+					</c:choose>
+					
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		<h1>2. 카드 명세서</h1>
-		<table class="table text-center" >
-			<thead>
-				<tr>
-					<th>사용처</th>
-					<th>가격</th>
-					<th>사용날짜</th>
-					<th>할부</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="cardBill" items="${cardBills }">
-				<tr>
-					<td>${cardBill.store }</td>
-					<td><fmt:formatNumber value="${cardBill.pay }" type="currency" /></td>
-					<td>
-						<fmt:parseDate value="${cardBill.date }" pattern="yyyy-MM-dd" var="date" />
-						<fmt:formatDate value="${date }" pattern="yyyy년 MM월 dd일" />
-					</td>
-					<td>${cardBill.installment }</td>
-				</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-		
-		
-		
-		
 	</div>
-	
 	
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
