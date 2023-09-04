@@ -7,12 +7,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>종합문제1</title>
+<title>날씨입력</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 
-	<div class="container d-flex">
+	<div class="container d-flex " width="1200px">
 		<div class="col-2 bg-primary text-center">
 			<img src="https://blog.kakaocdn.net/dn/TxmeD/btqCKArBvPm/2tzfJfINwg0WWmCzC4jKW0/img.jpg" width="100px">
 			<ul class="list-group list-group-flush">
@@ -22,47 +22,35 @@
 				<li class="list-group-item bg-primary"><a href="#" class="text-dark">관측 기후</a></li>
 			</ul>
 		</div>
-		<div class="col-10">
-			<h1>과거 날씨</h1>
-			<table class="table text-center">
-				<thead>
-					<tr>
-						<th>날짜</th>
-						<th>날씨</th>
-						<th>기온</th>
-						<th>강수량</th>
-						<th>미세먼지</th>
-						<th>풍속</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="weather" items="${weatherHistory }" >
-					<tr>
-						<td><fmt:formatDate value="${weather.date }" pattern="yyyy년 M월 dd일" /></td>
-						<td>
-							<c:choose>
-								<c:when test="${weather.weather eq '비'}">
-									<img src="http://marondal.com/material/images/dulumary/web/jstl/rainy.jpg">
-								</c:when>
-								<c:when test="${weather.weather eq '맑음'}">
-									<img src="http://marondal.com/material/images/dulumary/web/jstl/sunny.jpg">
-								</c:when>
-								<c:when test="${weather.weather eq '구름조금'}">
-									<img src="http://marondal.com/material/images/dulumary/web/jstl/partlyCloudy.jpg">
-								</c:when>
-								<c:when test="${weather.weather eq '흐림'}">
-									<img src="http://marondal.com/material/images/dulumary/web/jstl/cloudy.jpg">
-								</c:when>
-							</c:choose>
-						</td>
-						<td>${weather.temperatures }˚C</td>
-						<td>${weather.precipitation }mm</td>
-						<td>${weather.microDust }</td>
-						<td>${weather.windSpeed }km/h</td>
-					</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+		<div class="col-10 container">
+			<h1>날씨 입력</h1>
+			<div class="d-flex justify-content-between col-10 align-items-center">
+				<form method="get" action="/jstl/totaltest01/input">
+				<label>날짜</label><input type="text" name="date">
+				<label>날씨</label>
+				<select name="weather">
+					<option value="맑음">맑음</option>
+					<option value="구름조금">구름조금</option>
+					<option value="흐림">흐림</option>
+					<option value="비">비</option>
+				</select>
+				<label>미세먼지</label>
+				<select name="microDust">
+					<option value="좋음">좋음</option>
+					<option value="보통">보통</option>
+					<option value="나쁨">나쁨</option>
+					<option value="최악">최악</option>
+				</select>
+			</div>
+			<div class="d-flex justify-content-between col-10 align-items-center">
+				<label>기온</label><input type="text" name="temperatures">
+				<label>강수량</label><input type="text" name="precipitation">
+				<label>풍속</label><input type="text" name="windSpeed">
+			</div>
+			<div class="d-flex justify-content-end col-10">
+				<button type="submit btn btn-success">저장</button>
+			</div>
+			</form>
 		</div>
 	</div>
 	<footer class="container d-flex">
@@ -80,5 +68,9 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script>
+		${date}
+	
+	</script>
 </body>
 </html>

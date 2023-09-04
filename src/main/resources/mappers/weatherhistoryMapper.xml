@@ -23,6 +23,29 @@
  	
  	</select>
  	
+ 	<insert id="inputFuntion" parameterType="map">
+ 		
+ 		INSERT INTO
+ 		`WeatherHistory`
+ 		(
+ 	 	`date`
+ 		, `weather`
+ 		, `temperatures`
+ 		, `precipitation`
+ 		, `microDust`
+ 		, `windSpeed`
+ 		)
+ 		VALUE
+ 		(
+ 		#{date}
+ 		, #{weather}
+ 		, #{temperatures}
+ 		, #{precipitation}
+ 		, #{microDust}
+ 		, #{windSpeed}
+ 		)
+ 	</insert>
+ 	
  
  
  

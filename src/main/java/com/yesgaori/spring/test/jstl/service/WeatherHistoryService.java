@@ -1,5 +1,6 @@
 package com.yesgaori.spring.test.jstl.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,13 @@ public class WeatherHistoryService {
 		return weatherHistory;
 	}
 	
+	
+	public int inputWeatherHistory(String date, String weather, double temperatures, double precipitation, String microDust, double windSpeed) {
+		
+		int count = weatherHistoryRepository.inputFuntion(date, weather, temperatures, precipitation, microDust, windSpeed);
+		
+		return count;
+		
+	}
 	
 }
