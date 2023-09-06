@@ -2,31 +2,32 @@ package com.yesgaori.spring.test.ajax.domain;
 
 import java.util.Date;
 
-public class favorites {
+public class Favorites {
 
 	
 	private int id;
-	private String siteName;
-	private String siteAddress;
+	private String name;
+	private String url;
 	private Date createdAt;
 	private Date updatedAt;
+	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getSiteName() {
-		return siteName;
+	public String getName() {
+		return name;
 	}
-	public void setSiteName(String siteName) {
-		this.siteName = siteName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getSiteAddress() {
-		return siteAddress;
+	public String getUrl() {
+		return url;
 	}
-	public void setSiteAddress(String siteAddress) {
-		this.siteAddress = siteAddress;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	public Date getCreatedAt() {
 		return createdAt;
