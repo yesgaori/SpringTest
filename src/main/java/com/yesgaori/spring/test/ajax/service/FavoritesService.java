@@ -23,9 +23,9 @@ public class FavoritesService {
 		
 	}
 	
-	public int addFavorites(String siteName, String siteAddress) {
+	public int addFavorites(String name, String url) {
 		
-		int count = favoritesRepository.insertFavorite(siteName, siteAddress);
+		int count = favoritesRepository.insertFavorites(name, url);
 		
 		return count;
 	}
@@ -42,6 +42,12 @@ public class FavoritesService {
 		}
 	}
 	
+	public int deleteFavorites(int id) {
+		
+		int count = favoritesRepository.deleteFavorites(id);
+		
+		return count;
+	}
 	
 	
 }

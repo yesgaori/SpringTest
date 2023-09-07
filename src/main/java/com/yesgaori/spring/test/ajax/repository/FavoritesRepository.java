@@ -12,9 +12,11 @@ public interface FavoritesRepository {
 	
 	public List<Favorites> loadListRepository();
 	
-	public int insertFavorite(
+	public int insertFavorites(
 						@Param("name") String name
 						, @Param("url") String url);
 	
 	public int isDuplicateEmail(@Param("url") String url);
+	
+	public int deleteFavorites(@Param("id") int id);
 }

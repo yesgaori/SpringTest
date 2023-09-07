@@ -16,7 +16,7 @@
 	 		`favorites`
 	 </select>
  	
- 	<insert id="insertFavorite" parameterType="map">
+ 	<insert id="insertFavorites" parameterType="string">
  	
  		INSERT INTO
  			`favorites`
@@ -25,11 +25,11 @@
  				, `url`
  			)
  		VALUE
- 		(
- 			#{name}
- 			, #{url}
+ 			(
+	 			#{name}
+	 			, #{url}
  		
- 		)
+ 			)
  		
  			
  	
@@ -43,10 +43,18 @@
  		FROM
  			`favorites`
  		WHERE
- 			`url` == #{url}
+ 			`url` = #{url}
  	
  	
  	</select>
- 
+ 	
+ 	<delete id="deleteFavorites" parameterType="int" >
+ 		DELETE FROM
+ 			`favorites`
+ 		WHERE
+ 			`id` = #{id}
+ 	
+ 	</delete>
+ 	
  
  </mapper>

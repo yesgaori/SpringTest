@@ -45,13 +45,13 @@ public class FavoritesController {
 	public Map<String, String> createFavorites(
 						  @RequestParam("name") String name
 						  , @RequestParam("url") String url
-						  , Model model) {
+						  ) {
 		
 		int count = favoritesService.addFavorites(name, url);
 		// 성공 : {"result":"success"}
 		// 실패 : {"result":"fail"}
 		
-		Map<String, String> resultMap=new HashMap<>();
+		Map<String, String> resultMap = new HashMap<>();
 		
 		if(count == 1) {
 			resultMap.put("result", "success");
@@ -70,12 +70,32 @@ public class FavoritesController {
 		Map<String, Boolean> result = new HashMap<>();
 		
 		if(duplicate) {
-			result.put("isDuplicate", true);
+			result.put("result", true);
 		} else {
-			result.put("isDuplicate", false);
+			result.put("result", false);
 		}
 		
 		return result;
+	}
+	
+	@GetMapping("/delete")
+	@ResponseBody
+	public Map<String, String>deleteFavorties(@RequestParam("id")int id) {
+		
+		int count = favoritesService.deleteFavorites(id);
+		
+		// 성공 : {"result":"success"}
+		// 실패 : {"result":"fail"}
+		Map<String, String> resultMap = new HashMap<>();
+		if(count == 1) {
+			// 성공
+			resultMap.put("result", "success");
+		} else {
+			// 실패
+			resultMap.put("result", "fail");
+		}
+		
+		return resultMap;
 	}
 	
 }
