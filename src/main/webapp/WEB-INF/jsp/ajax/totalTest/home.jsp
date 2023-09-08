@@ -41,44 +41,19 @@
                     </div>
                 </article>
                 <article class="reservation-confirm" width="500px" height="300px">
-                    <div class="m-4">
-                        <div class="d-flex align-items-end">
-                            <h3 class="mr-4">예약 확인</h3>
-                        
-                            <label>회원
-                            <input type="radio" name="type" value='member' checked></label>
-                            <label class="ml-3">비 회원
-                            <input type="radio" name="type" value="nonMemeber"></label>
-                        </div>
-                        <div width="300px" class="member-input mt-3" id="member">
-                            <div class="input-gorup form-inline">
-                                <label width="90px" class="input-label">아이디 :</label>
-                                <input type="text" width="300px" class="form-control text-input" id="id">
-                            </div>
-                            <div class="input-gorup form-inline mt-3">
-                                <label width="90px" class="input-label">비밀번호 :</label>
-                                <input type="password" class="form-control text-input" id="password">
-                            </div>
 
-                        </div>
-
-                        <div class="no-member-input mt-3 d-none" id="nonMember">
+                        <div class="no-member-input mt-3">
                             <div class="input-gorup form-inline">
                                 <label class="input-label">이름 </label>
-                                <input type="text" class="form-control text-input" id="name">
+                                <input type="text" class="form-control text-input" id="nameInput">
                             </div>
                             <div class="input-gorup form-inline mt-3">
                                 <label class="input-label">전화번호 </label>
-                                <input type="text" class="form-control text-input" id="phoneNumber">
+                                <input type="text" class="form-control text-input" id="phoneNumberInput">
                             </div>
-                            <div class="input-gorup form-inline mt-3">
-                                <label class="input-label">날짜 </label>
-                                <input type="text" class="form-control text-input" id="date">
-                            </div>
-
                         </div>
                         <div class="d-flex justify-content-end">
-                            <button class="btn btn-success mt-3 mr-5" id="lookupBtn">조회 하기</button>
+                            <button class="btn btn-success mt-3 mr-5" id="findBtn">조회 하기</button>
                         </div>
                     </div>
                 </article>
@@ -105,7 +80,53 @@
 
     <script>
         $(document).ready(function() {
-
+			
+        	$("#findBtn").on("click", function() {
+        		
+        		let name = $("#nameInput").val();
+        		let phoneNumber = $("#phoneNumberInput").val();
+        		
+        		if(name == "") {
+        			alert("이름을 입력 해 주세요");
+        			return ;
+        		} 
+        		
+        		if(phoneNumber == "") {
+        			alert("전화번호를 입력 해 주세요");
+        			return ;
+        		}
+        		
+        		$.ajax ({
+        			type:"get"
+        			, url:"/ajax/booking/search"
+        			, data:{"name":name, "phoneNumber":phoneNumber}
+        			, success:function(data) {
+        				if(data ==""){
+        					alert("조회결과가 없습니다");
+        				} else {
+        					alert("이름 : " + data.name + "\n"
+            						+ "날짜 : " + data.date.substring(0,10) + "\n"
+            						+ "일수 : " + data.day + "\n"
+            						+ "인원 : " + data.headcount + "\n"
+            						+ "상태 : " + data.state);
+            				
+        				}
+        				
+        				
+        			}
+        			, error:function(data) {
+        				alert("조회 에러");
+        			}
+        			
+        			
+        		});
+        		
+        		
+        		
+        		
+        	});
+        	
+        	
             // 데이트 피커 셋팅
             $( "#date" ).datepicker({
                 minDate:0, 
