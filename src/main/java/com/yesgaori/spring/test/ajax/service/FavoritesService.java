@@ -12,7 +12,7 @@ import com.yesgaori.spring.test.ajax.repository.FavoritesRepository;
 public class FavoritesService {
 	
 	@Autowired
-	public FavoritesRepository favoritesRepository;
+	private FavoritesRepository favoritesRepository;
 	
 	
 	public List<Favorites> loadList() {

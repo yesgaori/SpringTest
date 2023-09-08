@@ -21,7 +21,7 @@ import com.yesgaori.spring.test.ajax.service.FavoritesService;
 public class FavoritesController {
 
 	@Autowired
-	public FavoritesService favoritesService;
+	private FavoritesService favoritesService;
 	
 	
 	@GetMapping("/input")
