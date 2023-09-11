@@ -101,18 +101,28 @@ public class BookingController {
 	// 일치하는 예약 정보를 response에 json으로 담아주는 API
 	@GetMapping("/search")
 	@ResponseBody
-	public Booking searchBooking(
+	public Map<String, Object> searchBooking(
 			@RequestParam("name")String name
 			, @RequestParam("phoneNumber") String phoneNumber) {
 		
 		Booking booking = bookingService.getBooking(name, phoneNumber);
 		
 		// 응답 json에 조회된 데이터가 있는지 없는지 정보를 명확하게 정의 한다.
-		
 		// {"name":김인규, "date":"2023-01-12", "day":2......}
+		// 조회 성공시 {"result":"success", "booking":"name":김인규, "2023-01-12", "day":2......}
+		// 조회 실패시 {"result":"fail"}
+		
+		Map<String, Object> resultMap = new HashMap<>();
+		
+		if(booking != null) {
+			resultMap.put("result", "success");
+			resultMap.put("booking", booking);
+		} else {
+			resultMap.put("result", "fail");
+		}
 		
 		
-		return booking;
+		return resultMap;
 		
 		
 	}
