@@ -23,23 +23,41 @@ public class CompanyController {
 	@GetMapping("/create")
 	@ResponseBody
 	public List<Company> createCompany() {
-		
-		String name = "넥손"; 
-		String business = "컨텐츠 게임"; 
-		String scale = "대기업"; 
-		int headcount = 3585;
-		
-		Company company = companyService.companyCreate(name, business, scale, headcount);
+			
+		Company company = companyService.companyCreate("넥손", "컨텐츠 게임", "대기업", 3585);
 		
 		List<Company> companyList = new ArrayList<>();
 		
 		companyList.add(company);
 		
-		name = "버블팡";
+		company = companyService.companyCreate("버블팡", "여신 금융업", "대기업", 6934);
 		
+		companyList.add(company);
 		
+		return companyList;
 		
 	}
 	
+	@GetMapping("/update")
+	@ResponseBody
+	public Company updateCompany() {
+	
+		// id가 8인 회사정보의 규모를 중소기업, 사원수 34명으로 수정
+		Company company = companyService.updateCompany(8, "중소기업", 34);
+		
+		return company;
+		
+	}
+	
+	
+	@GetMapping("/delete")
+	@ResponseBody
+	public String deleteCompany() {
+		
+		companyService.deleteCompany(8);
+		
+		return "수행완료";
+		
+	}
 	
 }

@@ -20,22 +20,30 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder(toBuilder=true)
 @Getter
-@Table(name="company")
+@Table(name="jobposting")
 @Entity
-public class Company {
-
+public class JobPosting {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	private String name;
-	private String business;
-	private String scale;
-	private int headcount;
+	@Column(name="companyId")
+	private int companyId;
+	
+	private String position;
+	private String respinsibilities;
+	private String qualification;
+	private String type;
+	private String region;
+	private int salary;
+	private String deadline;
 	
 	@UpdateTimestamp
-	@Column(name="createdAt", updatable=false)
+	@Column(name="createAt", updatable=false) 
 	private Date createdAt;
 	@Column(name="updatedAt")
 	private Date updatedAt;
+	
+	
 }
